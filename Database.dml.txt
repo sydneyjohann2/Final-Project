@@ -1,0 +1,59 @@
+--Data Deletion
+DELETE FROM ItineraryDetails
+WHERE ItineraryDetailID = 1003;
+
+--Data Update
+UPDATE Destinations
+SET Description = 'Historical City'
+WHERE DestinationID = 3;
+
+
+--Data Insertion
+INSERT INTO Users (UserID, UserName, Email)
+VALUES (6, 'OliviaSmith', 'olivia.smith@email.com');
+
+
+-- Data Retrieval
+SELECT I.ItineraryID, A.Name AS ActivityName, AD.Name AS AccommodationName
+FROM ItineraryDetails I
+JOIN Activities A ON I.ActivityID = A.ActivityID
+JOIN Accommodations AD ON I.AccommodationID = AD.AccommodationID
+WHERE I.ItineraryID = 101;
+
+
+--Select Join
+SELECT Accommodations.AccommodationID, Accommodations.Name AS AccommodationName, Accommodations.Type, Accommodations.Price,
+       Destinations.DestinationName, Destinations.Country
+FROM Accommodations
+JOIN Destinations ON Accommodations.DestinationID = Destinations.DestinationID;
+
+--Select Join Join 
+SELECT Users.UserName, Itineraries.ItineraryID, Destinations.DestinationName, Destinations.Country
+FROM Users
+JOIN Itineraries ON Users.UserID = Itineraries.UserID
+JOIN Destinations ON Itineraries.DestinationID = Destinations.DestinationID;
+
+--Select... Order By
+SELECT DestinationID, DestinationName, Country
+FROM Destinations
+ORDER BY Country;
+
+--Update
+UPDATE Users
+SET Email = 'new.email@example.com'
+WHERE UserID = 2;
+
+--Delete 
+DELETE FROM ItineraryDetails
+WHERE ItineraryID = 105;
+
+--Insert
+INSERT INTO Destinations (DestinationID, DestinationName, Country, Description)
+VALUES (6, 'Venice', 'Italy', 'City of Canals');
+
+--Select
+SELECT * FROM Users;
+
+--Select... Where
+SELECT * FROM Itineraries
+WHERE StartDate > '2023-04-01';
